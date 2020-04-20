@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -46,15 +48,24 @@ public class PathFinder
         bool found = false;
         while(found == false && pathQueue.IsEmpty() == false)
         {
-            //var currentTile = startingMapLocation;
+            var currentTile;
+            var currentPath = pathQueue.Dequeue();
 
-            // pathQueue holds all paths?
-            // discoveredPath is one path (a list of tiles)
-            // Dequeue pops the top item off pathQueue
-                    // If item is end tile, add that to discovered path and return
-                    // If not, check adjacent tiles. How?
+            for(int i = 0; i < currentPath.size(); i++)
+            {
+                currentTile = currentPath[i];
+                if(currentTile == null)
+                {
+                    return;
+                }
+                else if(currentTile == map.GetTile(end))
+                {
+                    discoveredPath.AddTileToPath(currentTile);
+                    return discoveredPath;
+                }
+            }
 
-            //OKAY! So we're updating discoveredPath as we go? And then adding discoveredPath to pathQueue if it doesn't have what we want? Does that make sense?
+            // Okay. Now I need to check the tiles neighbors. How do I go about that?
 
             //This line ensures that we don't get an infinite loop in Unity.
             //You will need to remove it in order for your pathfinding algorithm to work.
