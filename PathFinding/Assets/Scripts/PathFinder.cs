@@ -46,7 +46,15 @@ public class PathFinder
         bool found = false;
         while(found == false && pathQueue.IsEmpty() == false)
         {
-            //TODO: Implement Dijkstra's algorithm!
+            //var currentTile = startingMapLocation;
+
+            // pathQueue holds all paths?
+            // discoveredPath is one path (a list of tiles)
+            // Dequeue pops the top item off pathQueue
+                    // If item is end tile, add that to discovered path and return
+                    // If not, check adjacent tiles. How?
+
+            //OKAY! So we're updating discoveredPath as we go? And then adding discoveredPath to pathQueue if it doesn't have what we want? Does that make sense?
 
             //This line ensures that we don't get an infinite loop in Unity.
             //You will need to remove it in order for your pathfinding algorithm to work.
